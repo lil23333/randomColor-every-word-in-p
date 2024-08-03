@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mrBin</title>
+<style>
+body {
+background-color : #5F9EA0;
+}
+div {
+border: 1px solid #333;
+box-shadow: 8px 5px 8px;
+heigth : 30px;
+width  : 50px;
+backgroung-color : #F7F8A0;
+}
+.color1 {
+background-color : #DC143C;
+}
+
+.hh {
+font-weigth : bold;
+font-size : 24 px;
+}
+
+.color2 {
+background-color : #2F4F4F;
+}
+.hidden {
+display : none;
+}
+
+table {
+border-collapse: collapse;
+border : 1 px solid grey;
+}
+
+td {
+padding: 10px 20px;
+border : 1px solid grey;
+background-color : #F0F8FF;
+}
+
+</style>
+
+</head>
+
+<body>
+<p>The Arda valley and the valleys of its tributaries have been a preferred place for habitation since ancient times. A settlement from 6,000 BC was discovered during the construction works in the area of the town of Kardzhali.</p>
+<button>ckick me</button>
+
+
+<script>
+let p = document.querySelector('p');
+let button = document.querySelector('button');
+
+function randomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random()*16)];
+    }
+    return color;
+}
+
+
+p.innerHTML = p.textContent.replace(/\S/g, '<span>$&</span>');
+let span = document.getElementsByTagName('span');
+button.addEventListener('click',()=> {
+    let arr = [];
+for (let el of span) {
+    el.style.color = randomColor(); 
+    arr.push(el.style.color);
+   for (let i =1; i < arr.length; i++) {
+   if (arr[i] === arr[i-1]) {
+       arr.splice(i, 1, randomColor());
+   }
+   }
+}
+});
+
+
+</script>
+</body>
+</html>
